@@ -16,14 +16,14 @@
             <li>
                 <?php if (isset($component)) { $__componentOriginal53747ceb358d30c0105769f8471417f6 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal53747ceb358d30c0105769f8471417f6 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.card','data' => ['href' => ''.e(route('heroes.show', $hero->id)).'','highlight' => $hero->wounds < 2]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.card','data' => ['href' => '/heroes/'.e($hero->id).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('card'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['href' => ''.e(route('heroes.show', $hero->id)).'','highlight' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($hero->wounds < 2)]); ?>
+<?php $component->withAttributes(['href' => '/heroes/'.e($hero->id).'']); ?>
                     <div>
                         <h3><?php echo e($hero->name); ?></h3>
                         <p>Attributes: <?php echo e($hero->attributes); ?></p>

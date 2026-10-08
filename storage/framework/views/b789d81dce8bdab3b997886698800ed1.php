@@ -28,7 +28,7 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars, $__key, $__value); ?>
 
-<div class="<?php echo \Illuminate\Support\Arr::toCssClasses(["card", "highlight" => $highlight]); ?>">
+<div class="<?php echo \Illuminate\Support\Arr::toCssClasses(['highlight' => $highlight, 'card']); ?>">
     <?php echo e($slot); ?>
 
     <a <?php echo e($attributes); ?> class="btn">View Details</a>

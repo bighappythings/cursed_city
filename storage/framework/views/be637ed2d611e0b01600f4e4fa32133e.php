@@ -1,15 +1,17 @@
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursed City</title>
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+
+    <link rel="stylesheet" href="resources/css/app.css">
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css']); ?>
 </head>
 
 <body>
     <?php if(session('success')): ?>
-        <div id="flash" class="text-center bg-green-500 text-green-50 p-4 font-bold">
+        <div id="flash" class="p-4 text-center bg-green-50 text-green-500 font-bold">
             <?php echo e(session('success')); ?>
 
         </div>
@@ -18,10 +20,11 @@
     <header>
         <nav>
             <h1>Cursed City</h1>
-            <a href="<?php echo e(route('enemies.index')); ?>" class="btn">All Enemies</a>
-            <a href="<?php echo e(route('enemies.create')); ?>" class="btn">Create New Enemy</a>
-            <a href="<?php echo e(route('heroes.index')); ?>" class="btn">All Heroes</a>
-            <a href="<?php echo e(route('heroes.create')); ?>" class="btn">Create New Hero</a>
+            <a class="btn btn-red" href="<?php echo e(route('enemies.index')); ?>"> All Enemies</a>
+            <a class="btn btn-red" href="<?php echo e(route('enemies.create')); ?>">Create a new enemy</a>
+
+            <a class="btn btn-red" href="<?php echo e(route('heroes.index')); ?>"> All Heroes</a>
+            <a class="btn btn-red" href="<?php echo e(route('heroes.create')); ?>">Create a new hero</a>
         </nav>
     </header>
 

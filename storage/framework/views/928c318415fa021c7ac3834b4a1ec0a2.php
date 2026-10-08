@@ -8,63 +8,55 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <h2>Create New Enemy</h2>
 
-    <form action="<?php echo e(route('enemies.store')); ?>" method="POST">
+    <form action=" <?php echo e(route('enemies.store')); ?>" method="POST">
         <?php echo csrf_field(); ?>
 
-        <!-- Enemy Name -->
-        <label for="name">Enemy Name:</label>
-        <input type="text" id="name" name="name" value="<?php echo e(old('name')); ?>" required>
+        <h2>Create New Enemy</h2>
 
-        <label for="move">Enemy Move:</label>
-        <input type="text" id="move" name="move" value="<?php echo e(old('move')); ?>" required>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<?php echo e(old('name')); ?>" required>
 
-        <!-- Enemy Wounds -->
-        <label for="wounds">Enemy Wounds:</label>
-        <input type="text" id="wounds" name="wounds" value="<?php echo e(old('wounds')); ?>" required>
+        <label for="move">Move:</label>
+        <input type="number" name="move" id="move" value="<?php echo e(old('move')); ?>">
 
-        <!-- Enemy Size -->
-        <label for="size">Enemy Size:</label>
-        <input type="text" id="size" name="size" value="<?php echo e(old('size')); ?>" required>
+        <label for="Wounds">Wounds:</label>
+        <input type="number" name="wounds" id="wounds" value="<?php echo e(old('wounds')); ?>" required>
 
-        <!-- Enemy Weapons -->
-        <label for="weapons">Enemy Weapons:</label>
-        <input type="text" id="weapons" name="weapons" value="<?php echo e(old('weapons')); ?>" required>
 
-        <!-- Enemy Dice -->
-        <label for="dice">Enemy Dice:</label>
-        <input type="text" id="dice" name="dice" value="<?php echo e(old('dice')); ?>" required>
+        <label for="Size">Size:</label>
+        <input type="text" name="size" id="size" value="<?php echo e(old('size')); ?>">
 
-        <!-- Enemy Damage -->
-        <label for="damage">Enemy Damage (0-100):</label>
-        <input type="number" id="damage" name="damage" value="<?php echo e(old('damage')); ?>" required>
+        <label for="Weapons">Weapons:</label>
+        <input type="text" name="weapons" id="weapons" value="<?php echo e(old('weapons')); ?>">
 
-        <!-- Enemy Special Rules -->
-        <label for="specialRules">Special Rules:</label>
-        <input type="text" id="specialRules" name="specialRules" value="<?php echo e(old('specialRules')); ?>" required>
+        <label for="Dice">Dice:</label>
+        <input type="text" name="dice" id="dice" value="<?php echo e(old('dice')); ?>">
 
-        <!-- Enemy Behaviours -->
-        <label for="behaviours">Behaviours:</label>
-        <input type="text" id="behaviours" name="behaviours" value="<?php echo e(old('behaviours')); ?>" required>
+        <label for="Damage">Damage:</label>
+        <input type="text" name="damage" id="damage" value="<?php echo e(old('damage')); ?>">
 
-        <!-- Enemy Bio -->
-        <label for="bio">Biography:</label>
-        <textarea rows="5" id="bio" name="bio" required><?php echo e(old('bio')); ?></textarea>
+        <label for="SpecialRules">Special Rules:</label>
+        <input type="text" name="specialRules" id="specialRules" value="<?php echo e(old('specialRules')); ?>">
 
-        <!-- select an enemy type -->
-        <label for="type_id">Enemy Type:</label>
+        <label for="Behaviours">Behaviours:</label>
+        <input type="text" name="behaviours" id="behaviours" value="<?php echo e(old('behaviours')); ?>">
+
+        <label for="Bio">Bio:</label>
+        <textarea rows="5" name="bio" id="bio"><?php echo e(old('bio')); ?></textarea>
+
+        <label for="type_id">Type:</label>
         <select id="type_id" name="type_id" required>
-            <option value="" disabled selected>Select an enemy type</option>
+            <option value="" disabled selected>Select a type</option>
             <?php $__currentLoopData = $types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <option value="<?php echo e($type->id); ?>" <?php echo e(old('type_id') == $type->id ? 'selected' : ''); ?>>
+                <option value="<?php echo e($type->id); ?>" <?php echo e($type->id == old('type_id') ? 'selected' : ''); ?>>
                     <?php echo e($type->name); ?>
 
                 </option>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
 
-        <button type="submit" class="btn mt-4">Create Enemy</button>
+        <button type="submit" class="btn btn-green">Create Enemy</button>
 
         <!-- validation errors -->
         <?php if($errors->any()): ?>
@@ -73,7 +65,6 @@
                     <li class="my-2 text-red-500"><?php echo e($error); ?></li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
-
         <?php endif; ?>
 
     </form>
